@@ -82,7 +82,7 @@ def event():
                 size="4",
             ),
             align="center",
-            spacing="2",
+            spacing="7",
             font_size="2em",
             margin_left= "8em",
             margin_right= "8em",

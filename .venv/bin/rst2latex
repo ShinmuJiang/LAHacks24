@@ -1,4 +1,4 @@
-#!/Users/blueberry/townhall/.venv/bin/python3.12
+#!/Users/theol/Documents/LAHacks/.venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
