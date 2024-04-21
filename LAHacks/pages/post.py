@@ -26,6 +26,17 @@ import reflex as rx
 #         height="100vh",
 #     )
 
+config = rx.Config(
+    app_name="townhall_app",
+    db_url="sqlite:///reflex.db",
+)
+
+class Post(rx.Model, table=True):
+    date: str
+    time: str
+    location: str
+    description: str
+
 class FormState(rx.State):
     form_data: dict = {}
 
@@ -36,36 +47,48 @@ class FormState(rx.State):
 def post():
     return rx.center(
         rx.vstack(
-            rx.heading("Post page!", size="9"),
+            rx.heading("Post", size="9"),
             rx.text("Fill in your interests here"),
-            rx.card(
                 rx.form(
                     rx.vstack(
+                        rx.hstack(rx.icon("calendar"), rx.text("Event Date", size="1"),
                         rx.input(
-                            placeholder="Day, Month, Time",
-                            name="Start time",
-                            width="100%",
+                            placeholder="Month, Date",
+                            name="eventTime",
+                            style={"maxWidth": 500},
                         ),
+                        ),
+
+                        rx.hstack(rx.icon("locate-fixed"), rx.text("Location", size="1"),
                         rx.input(
-                            placeholder="Last Name",
-                            name="last_name",
+                            placeholder="Location",
+                            name="eventLocation",
+                            style={"maxWidth": 500},
                         ),
-                        rx.hstack(
-                            rx.checkbox("Checked", name="check"),
-                            rx.switch("Switched", name="switch"),
                         ),
-                        rx.button("Submit", type="submit"),
-                        width="100%",
+
+                        rx.hstack(rx.icon("text"), rx.text("Description", size="1"),
+                        rx.text_area(
+                            placeholder="Description",
+                            name="eventDescription",
+                        ),
+                        ),
+                        rx.button(
+                            "Submit",
+                            background_image="linear-gradient(144deg,#AF40FF,#5B42F3 50%,#00DDEB)",
+                            box_shadow="rgba(151, 65, 252, 0.8) 0 15px 30px -10px",
+                            _hover={
+                                "opacity": 0.5,
+                            },
+                            size="3",
+                            type="submit"
+                        ),
+                        style={"maxWidth": 500},
                     ),
                     on_submit=FormState.handle_submit,
                     reset_on_submit=True,
-                    width="100%",
                 ),
-                width="100%",
-            ),
-            rx.divider(),
-            rx.heading("Results"),
-            # rx.text(FormState.form_data.to_string()),
+            style={"maxWidth": 500},
 
             align="center",
             spacing="7",
