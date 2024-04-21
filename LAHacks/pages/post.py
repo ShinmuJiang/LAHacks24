@@ -26,15 +26,54 @@ import reflex as rx
 #         height="100vh",
 #     )
 
-class PostFormState(rx.State):
+class FormState(rx.State):
     form_data: dict = {}
 
     def handle_submit(self, form_data: dict):
         """Handle the form submit."""
-        # self.form_data = form_data
-        rx.redirect("/event")
+        self.form_data = form_data
 
 def post():
+    return rx.center(
+        rx.vstack(
+            rx.heading("Post page!", size="9"),
+            rx.text("Fill in your interests here"),
+            rx.card(
+                rx.form(
+                    rx.vstack(
+                        rx.input(
+                            placeholder="Day, Month, Time",
+                            name="Start time",
+                            width="100%",
+                        ),
+                        rx.input(
+                            placeholder="Last Name",
+                            name="last_name",
+                        ),
+                        rx.hstack(
+                            rx.checkbox("Checked", name="check"),
+                            rx.switch("Switched", name="switch"),
+                        ),
+                        rx.button("Submit", type="submit"),
+                        width="100%",
+                    ),
+                    on_submit=FormState.handle_submit,
+                    reset_on_submit=True,
+                    width="100%",
+                ),
+                width="100%",
+            ),
+            rx.divider(),
+            rx.heading("Results"),
+            # rx.text(FormState.form_data.to_string()),
+
+            align="center",
+            spacing="7",
+            font_size="2em",
+        ),
+        height="100vh",
+    )
+
     return rx.center(
         rx.vstack(
             rx.heading("Post page!", size="9"),
