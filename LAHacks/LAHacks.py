@@ -4,6 +4,10 @@ from rxconfig import config
 
 import reflex as rx
 
+from LAHacks.pages.post import post; #STEP ONE: where user makes a post
+from LAHacks.pages.event import event; #STEP TWO: use Gemini API to generate event content
+from LAHacks.pages.photo import photo; #STEP THREE: users can upload photos from their day
+
 docs_url = "https://reflex.dev/docs/getting-started/introduction/"
 filename = f"{config.app_name}/{config.app_name}.py"
 
@@ -11,19 +15,22 @@ filename = f"{config.app_name}/{config.app_name}.py"
 class State(rx.State):
     """The app state."""
 
-
 def index() -> rx.Component:
     return rx.center(
-        rx.theme_panel(),
+        # rx.theme_panel(),
         rx.vstack(
             rx.heading("Welcome to Townhall!", size="9"),
-            rx.text("Get started by editing ", rx.code(filename)),
+            rx.text("Get started now "),
             rx.button(
-                "Check out our docs!",
-                on_click=lambda: rx.redirect(docs_url),
+                "Create an event",
+                background_image="linear-gradient(144deg,#AF40FF,#5B42F3 50%,#00DDEB)",
+                box_shadow="rgba(151, 65, 252, 0.8) 0 15px 30px -10px",
+                _hover={
+                    "opacity": 0.5,
+                },
+                on_click=lambda: rx.redirect("/post"),
                 size="4",
             ),
-            rx.logo(),
             align="center",
             spacing="7",
             font_size="2em",
@@ -32,5 +39,10 @@ def index() -> rx.Component:
     )
 
 
+
 app = rx.App()
 app.add_page(index)
+
+app.add_page(post)
+app.add_page(event)
+app.add_page(photo)
