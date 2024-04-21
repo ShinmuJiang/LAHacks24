@@ -23,8 +23,8 @@ def index() -> rx.Component:
             rx.text("Get started now "),
             rx.button(
                 "Create an event",
-                background_image="linear-gradient(144deg,#AF40FF,#5B42F3 50%,#00DDEB)",
-                box_shadow="rgba(151, 65, 252, 0.8) 0 15px 30px -10px",
+                background_image="linear-gradient(144deg,#84b3a1,#7f79a3 50%,#d2d8d9)",
+                box_shadow="rgba(175, 247, 168, 0.8) 0 15px 30px -10px",
                 _hover={
                     "opacity": 0.5,
                 },
@@ -34,8 +34,10 @@ def index() -> rx.Component:
             align="center",
             spacing="7",
             font_size="2em",
+            color="#fdfdfd",
         ),
         height="100vh",
+        background="#192734"
     )
 
 

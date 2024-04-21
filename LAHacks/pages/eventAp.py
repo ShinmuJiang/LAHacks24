@@ -8,8 +8,31 @@ genai.configure(api_key="AIzaSyDxIzgfd9deVd4WTXfHQaLL262NkcxooHA")
 model = genai.GenerativeModel('gemini-pro')
 chat = model.start_chat(history=[])
 
+from rxconfig import config
+from sqlmodel import Field, Session, SQLModel, create_engine, select
+import reflex as rx
+
+from event import Post;
+
+import reflex as rx
+
+datelist = []
+timelist = []
+locationlist = []
+descriptionlist = []
+
+def select_events():
+    with rx.session() as session:
+        statement = select(Post)
+        results = session.exec(statement)
+        for hero in results:
+            datelist.append(self.form_data['date'])
+            timelist.append(self.form_data['time'])
+            locationlist.append(self.form_data['location'])
+            descriptionlist.append(self.form_data['description'])
+
 text = """
-You will be asked the following question: Create a volunteering event in San Francisco, around noon, that combines some general aspects of poverty, park, cleanup, sustainability, planting, and painting. Find one restaurant close to the venue and suggest it with details on the popular menu items. Include the rating of the restaurant. Fill it all in with specific details. For the venue of the event and the restaurant.
+You will be asked the following question: Create a volunteering event surrounding places in ${locationlist}, around the time of ${timelist} and ${datelist}, that combines some general aspects of ${descriptionlist}. Find one restaurant close to the venue and suggest it with details on the popular menu items. Include the rating of the restaurant. Fill it all in with specific details. For the venue of the event and the restaurant.
 Your reply should be just like the example below. Format it as in markdown with bulletpoints too.
 
 Example question: Create a volunteering event in Los Angeles, on 05/18/2024, around noon, that combines some general aspects of poverty, park , cleanup, sustainability, planting, and painting. Find one restaurant close to the venue and suggest it with details on the popular menu items. Include the rating of the restaurant. Fill it all in with specific details. For the venue of the event and the restaurant, include a link to google maps.
