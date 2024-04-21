@@ -8,13 +8,13 @@ genai.configure(api_key="AIzaSyDxIzgfd9deVd4WTXfHQaLL262NkcxooHA")
 model = genai.GenerativeModel('gemini-pro')
 chat = model.start_chat(history=[])
 
-text = """You will be asked a question. Your reply should include a title, a descriptive paragraph, and a concluding paragraph as illustrated below. Format it well in markdown with bulletpoints too.
+text = """You will be asked a question. Your reply should include a title, a descriptive paragraph, and a concluding paragraph as illustrated below. Format it well in markdown with bulletpoints too. 
 
 Real question: Create a volunteering event in Los Angeles, around noon, that combines some general aspects of poverty, park , cleanup, sustainability, planting, and painting. Find one restaurant close to the venue and suggest it with details on the popular menu items. Include the rating of the restaurant. Fill it all in with specific details. For the venue of the event and the restaurant, include a link to google maps.
 
 Example question: Create a volunteering event in Los Angeles, around noon, that combines some general aspects of poverty, park , cleanup, sustainability, planting, and painting. Find one restaurant close to the venue and suggest it with details on the popular menu items. Include the rating of the restaurant. Fill it all in with specific details. For the venue of the event and the restaurant, include a link to google maps. 
 Example reply:
-Title: Be the Change: Community Revitalization Project at Gloria Molina Grand Park!
+Be the Change: Community Revitalization Project at Gloria Molina Grand Park!
 Join us for a volunteer event that tackles several important issues in a fun and impactful way!
 
 Date: Saturday, May 18th
@@ -63,12 +63,13 @@ Register for the event at [link to volunteer registration website]. Spots are li
 We look forward to seeing you there and making a positive impact together!
 """
 response = chat.send_message(text)
-
+without_title = chat.send_message(f"repeat this but without the title: {response.text}")
+title = chat.send_message("repeat the title without the bold")
 def event():
     return rx.center(
         # rx.theme_panel(),
         rx.vstack(
-            rx.heading("Event page!", size="9"),
+            #rx.heading(title.text, size="9", color_scheme="crimson"),
             rx.markdown(response.text),
             rx.button(
                 "Next",
@@ -83,7 +84,8 @@ def event():
             align="center",
             spacing="2",
             font_size="2em",
-            margin_left= "3em",
-            margin_right= "3em",
+            margin_left= "8em",
+            margin_right= "8em",
         ),
+        background="blue"
     )
