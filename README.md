@@ -110,7 +110,7 @@ mkdir my_app_name
 cd my_app_name
 ```
 
-Next, we set up the python3 virtual environment. The first command creates a virtual environment called `.venv`. The second command activates the environment, which modifies the shell's environment to use the Python interpreter and packages installed within the virtual environment, instead of the system-wide Python interpreter and packages. Overall, a virtual environment is like having a special cooking station within your kitchen for each recipe. It helps us stay organized. More about Python virtual environments ![here](https://docs.python.org/3/library/venv.html).
+Next, we set up the python3 virtual environment. The first command creates a virtual environment called `.venv`. The second command activates the environment, which modifies the shell's environment to use the Python interpreter and packages installed within the virtual environment, instead of the system-wide Python interpreter and packages. Overall, a virtual environment is like having a special cooking station within your kitchen for each recipe. It helps us stay organized. More about Python virtual environments [here](https://docs.python.org/3/library/venv.html).
 ```
 python3 -m venv .venv
 source .venv/bin/activate
@@ -128,11 +128,11 @@ Think of an API like a menu at a restaurant. Just as you look at the menu and te
 
 For the purposes of Gemini API, it allows our application, Townhall, to use Google's Gemini Language model directly in our site! Let's set it up:
 
-First we set up an API key ![here](https://ai.google.dev/gemini-api/docs/api-key).
+First we set up an API key [here](https://ai.google.dev/gemini-api/docs/api-key).
 
 In the terminal, run `pip install -q -U google-generativeai`
 
-Now for the code, we referenced ![Google's developer docs](https://ai.google.dev/gemini-api/docs/get-started/python). See our code below.
+Now for the code, we referenced [Google's developer docs](https://ai.google.dev/gemini-api/docs/get-started/python). See our code below.
 ```
 import google.generativeai as genai
 
