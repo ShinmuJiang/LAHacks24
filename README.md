@@ -9,28 +9,28 @@ We know that if Townhall were implemented in larger cities with more users, the 
 ## What it does 😼
 With Townhall, you can connect with your local community and collaborate on nonprofit-sponsored volunteer events that are in your best interests. Find your cause, and make a difference. Here’s how the app works:
 
-###Create###
+**Create**
 Enter personal preference details like available location, time, and activity
 
-###See Your Event###
+**See Your Event**
 Gemini API generates a detailed event based on multiple data entries from people in the area. Using this data, the API matches people with similar interests and availabilities and creates an event. The event page will include the venue/directions, time/date, and even a description of the event and its activities. It also includes a social aspect of going for food after the event. The API will find local restaurants and display detailed descriptions of their menus.
 
-###Post###
+**Post**
 See photos taken by other volunteers around the world who you can draw inspiration from. You can also upload your pictures onto the website and share them on various social media platforms. This not only increases exposure for the website, but also allows volunteers to be proud of their work.
 
 ## Challenges we ran into 😩
 
 Out of our team of 4, three of us have almost no coding experience (2 have minimal coding experience, and another has less than a year of experience). With this experience, we spent a lot of time with setting up environments, and experimented a lot with each of the tools below.
 
-###Github###
+**Github**
 ![alt text](https://i.ibb.co/crMY4kc/Database-Components-Styling-Presentation-1.jpg)
 
 Alvin Tan pushed 4 million lines of code 💀 less than a day after downloading VS Code for the first time. As first-year students with minimal project experience, navigating and learning git was difficult; we experienced hours of encounters with merge conflicts, “fatal errors”, and learning about maintaining the project structure through git.
 
-###Gemini###
+**Gemini**
 Gemini is a crucial API used on our website. The automatic curation of an event is an important aspect of making volunteering opportunities more accessible and available. However, even though the Gemini output was amazing beyond expectations, we encountered many problems with its consistency. A 50/50 chance that the API printing “The Volunteer Event:” was a typical and common problem that was only fixed with two specific statements asking it not to write that. We also encountered a difference in the responses provided by the API vs the Gemini website. This was fixed using specific statements and a specially made template that we suggested the API follow. We had tremendous success and the events made are better than most people can make in a short time.
 
-###Reflex###
+**Reflex**
 One of the things we realized was the documentation for Reflex was missing information regarding some main things:
 - Retrieving information from posts
 - Styling components
